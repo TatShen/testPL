@@ -1,0 +1,64 @@
+.label {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0 0.625rem;
+  flex-direction: column;
+  color: grey;
+  cursor: text;
+  width: 100%;
+}
+
+.input {
+  color:grey ;
+  cursor: text;
+
+  &::placeholder {
+    color: grey;
+  }
+  }
+
+.placeholder{
+  position: absolute;
+  left:0;
+  top:0.5rem;
+  margin-left: 1.25rem;
+  color: grey;
+  transition: 0.2s ease;
+
+  &.animated {
+  transform: translate(0rem, -1rem) scale(0.88);
+ }
+
+ &.hidden { 
+  display: none;
+ }
+
+}
+
+
+.close {
+  position: absolute;
+  right: 3rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  background: none;
+  stroke: grey;
+}
+
+.label.iconLeft {
+  .input {
+    padding-left: 3.5rem;
+    cursor: text;
+  }
+}
+
+.label.iconRight {
+  .rightIconContainer {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+  }
+}
+

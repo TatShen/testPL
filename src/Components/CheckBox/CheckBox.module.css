@@ -1,0 +1,66 @@
+.pseudo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+  width: 1.5rem;
+  height: 1.5rem;
+  outline: none;
+  border: 0.0625rem solid gray;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  display: flex;
+
+  & .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.label {
+  display: inline-flex;
+  justify-content: flex-start;
+  gap: 0.75rem;
+  background-color: white;
+  color: grey;
+  cursor: pointer;
+
+  &.disabled .pseudo {
+    border-color: blue;
+    background-color: transparent;
+    color: blue;
+  }
+
+  &:not(.disabled) {
+    &:hover .pseudo {
+      border-color: gray;
+    }
+
+    & .pseudo:focus,
+    & .pseudo:focus-visible {
+      border: 0.125rem solid gray;
+    }
+
+    &.error .pseudo:focus,
+    &.error .pseudo:focus-visible {
+      border-color: black;
+    }
+
+    &.error.checked .pseudo {
+      border-color: black;
+    }
+  }
+}
+
+.block {
+  position: relative;
+  display: flex;
+  width:1.5rem;
+  height:1.5rem;
+}
+
+.input[type="checkbox"] {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+}
