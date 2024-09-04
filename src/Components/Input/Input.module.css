@@ -1,0 +1,27 @@
+.label {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0 0.625rem;
+  flex-direction: column;
+  color: black;
+  cursor: text;
+  width: 100%;
+}
+
+.input {
+  color: black;
+  cursor: text;
+
+  &::placeholder {
+    color: black;
+  }
+}
+
+.label.iconRight {
+  .rightIconContainer {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+}
