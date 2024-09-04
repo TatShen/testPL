@@ -1,47 +1,33 @@
-"use client"
-import { type ChangeEvent, useEffect, useState } from "react"
+"use client";
+import { type ChangeEvent, useState } from "react";
 
-import classNames from "classnames"
-import Close from '../../../public/icons/close.svg'
-import style from "./Input.module.css"
+import classNames from "classnames";
+import style from "./Input.module.css";
 
-
-import type { InputProps } from "./Types"
+import type { InputProps } from "./Types";
 
 const Input: React.FC<InputProps> = ({
-  label,
   placeholder,
-  width,
-  labelWidth,
-  labelStyle,
   name,
-  handler,
+  updateState,
   className,
   type,
   icon,
-  onblur,
-  focus,
   iconPosition,
 }) => {
-  
-  const [value, setValue] = useState<string>("")
-  const [isFocus, setIsFocus] = useState(false)
-  
+  const [value, setValue] = useState<string>("");
+
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-      setValue(e.target.value)
-  }
+    setValue(e.target.value);
+    updateState(e.target.value);
+  };
 
-
-  const classes = classNames(
-    style.input,
-    className,
-  )
+  const classes = classNames(style.input, className);
 
   const labelClasses = classNames(
-    labelStyle,
     style.label,
     iconPosition && (iconPosition === "left" ? style.iconLeft : style.iconRight)
-  )
+  );
   return (
     <>
       <label className={labelClasses}>
@@ -53,21 +39,13 @@ const Input: React.FC<InputProps> = ({
           type={type || "text"}
           value={value}
           onChange={(e: ChangeEvent<HTMLInputElement>) => onChangeHandler(e)}
-          onBlur={() => {
-            setIsFocus(false)
-            if (onblur) {
-              onblur()
-            }
-          }}
-          onFocus={() => setIsFocus(true)}
-          autoFocus={focus}
         />
         {iconPosition === "right" && (
           <div className={style.rightIconContainer}>{icon}</div>
         )}
       </label>
     </>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;

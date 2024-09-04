@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import style from "./StarRating.module.css";
-import Star from '../../../public/icons/star.svg';
+import Star from "../../../public/icons/star.svg";
 
 type StarRatingProps = {
   hidden?: string;
@@ -15,17 +15,13 @@ const StarRating: React.FC<StarRatingProps> = ({ rating, hidden }) => {
       <Star
         key={i}
         className={classNames({
-          [style.active]: i < rating,
-          [style.inactive]: i >= rating,
+          [style.active]: i < rating / 2,
+          [style.inactive]: i >= rating / 2,
         })}
       />
     );
   }
-  return (
-    <div className={style.container}>
-      {stars}
-    </div>
-  );
+  return <div className={style.container}>{stars}</div>;
 };
 
 export default StarRating;

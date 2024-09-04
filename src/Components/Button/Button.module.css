@@ -1,8 +1,7 @@
-
 /* Primary */
 .btn.primary:not(.disabled) {
   border: 0.125rem solid blue;
-  background-color:transparent;
+  background-color: transparent;
   color: blue;
   height: 3rem;
 
@@ -16,13 +15,11 @@
     border-color: rgb(4, 4, 103);
     color: rgb(4, 4, 103);
   }
-
 }
 
 .btn.primary.normal {
   padding: 0.875rem 1.875rem;
 }
-
 
 /* Secondary */
 .btn.secondary:not(.disabled) {
@@ -66,7 +63,6 @@
   }
 }
 
-
 /* Common style */
 .btn {
   position: relative;
@@ -105,13 +101,11 @@
     background-color: gray;
     color: white;
     fill: white;
-    stroke:white;
+    stroke: white;
     cursor: no-drop;
     pointer-events: none;
   }
-
 }
-
 
 /* Animation */
 @keyframes rotate360 {

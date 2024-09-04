@@ -10,53 +10,24 @@
   border-radius: 0.25rem;
   background-color: transparent;
   display: flex;
-
-  & .icon {
-    width: 1rem;
-    height: 1rem;
-  }
+  padding: 0.2rem;
 }
 
 .label {
   display: inline-flex;
   justify-content: flex-start;
+  align-items: center;
   gap: 0.75rem;
   background-color: white;
   color: grey;
   cursor: pointer;
-
-  &.disabled .pseudo {
-    border-color: blue;
-    background-color: transparent;
-    color: blue;
-  }
-
-  &:not(.disabled) {
-    &:hover .pseudo {
-      border-color: gray;
-    }
-
-    & .pseudo:focus,
-    & .pseudo:focus-visible {
-      border: 0.125rem solid gray;
-    }
-
-    &.error .pseudo:focus,
-    &.error .pseudo:focus-visible {
-      border-color: black;
-    }
-
-    &.error.checked .pseudo {
-      border-color: black;
-    }
-  }
 }
 
 .block {
   position: relative;
   display: flex;
-  width:1.5rem;
-  height:1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .input[type="checkbox"] {

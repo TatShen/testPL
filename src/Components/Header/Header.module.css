@@ -1,4 +1,3 @@
-
 .header {
   display: flex;
   height: 7rem;
@@ -6,7 +5,7 @@
   align-items: center;
 }
 
-.menu{
+.menu {
   display: flex;
   justify-content: center;
   gap: 2rem;

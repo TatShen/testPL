@@ -27,7 +27,7 @@ export default function RootLayout({
         </header>
         <main className="globalMain">{children}</main>
         <footer className="globalFooter">
-          <Footer/>
+          <Footer />
         </footer>
       </body>
     </html>

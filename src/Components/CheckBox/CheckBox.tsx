@@ -1,18 +1,17 @@
-import React from "react"
+import React from "react";
 
-import classNames from "classnames"
-import Check from '../../../public/icons/check.svg';
-import style from "./CheckBox.module.css"
-
+import classNames from "classnames";
+import Check from "../../../public/icons/check.svg";
+import style from "./CheckBox.module.css";
 
 type CheckBoxProps = {
-  label?: string
-  checked: boolean
-  onChange: (e: boolean) => void
-  isDisabled?: boolean
-  isError?: boolean
-  textPosition?: "left" | "right"
-}
+  label?: string;
+  checked: boolean;
+  onChange: (e: boolean) => void;
+  isDisabled?: boolean;
+  isError?: boolean;
+  textPosition?: "left" | "right";
+};
 
 const CheckBox: React.FC<CheckBoxProps> = ({
   checked,
@@ -20,14 +19,14 @@ const CheckBox: React.FC<CheckBoxProps> = ({
   isError,
   label,
   onChange,
-  textPosition = "right"
+  textPosition = "right",
 }) => {
   const labelClasses = classNames(
     style.label,
     checked && style.checked,
     isError && style.error,
     isDisabled && style.disabled
-  )
+  );
 
   return (
     <label className={labelClasses}>
@@ -40,12 +39,10 @@ const CheckBox: React.FC<CheckBoxProps> = ({
           disabled={isDisabled}
           onChange={(e) => onChange(e.target.checked)}
         />
-        <div className={style.pseudo}>
-          <Check/>
-        </div>
+        <div className={style.pseudo}>{checked && <Check />}</div>
       </div>
       {label && textPosition === "right" && <span>{label}</span>}
     </label>
-  )
-}
-export default CheckBox
+  );
+};
+export default CheckBox;
