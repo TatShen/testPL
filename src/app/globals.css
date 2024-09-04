@@ -35,7 +35,7 @@ ol {
   list-style-type: none;
 }
 
-li{
+li {
   list-style: none;
 }
 
@@ -46,7 +46,6 @@ input {
   cursor: text;
   caret-color: black;
 }
-
 
 .globalHeader {
   position: fixed;
@@ -61,15 +60,18 @@ input {
   margin-top: 8rem;
 }
 
+@media (width<=700px) {
+  .globalMain {
+    margin-top: 13rem;
+  }
+}
+
 @media screen and (width <=360px) {
   .globalMain {
     min-width: 22.5rem;
-    margin-top: 4.3125rem;
   }
 
-  .globalHeader{
+  .globalHeader {
     width: 22.5rem;
-    height: 4.3125rem;
   }
-
 }

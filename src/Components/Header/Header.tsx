@@ -31,7 +31,26 @@ const Header: React.FC<HeaderProps> = () => {
         />
       )}
       <Container className={style.header}>
-        <Logo />
+        <div className={style.logo}>
+          <Logo />
+          {user ? (
+            <Button
+              view="primary"
+              title="Log Out"
+              size="normal"
+              disabled={false}
+              onClick={() => setUser(false)}
+            />
+          ) : (
+            <Button
+              view="primary"
+              title="Log In"
+              size="normal"
+              disabled={false}
+              onClick={() => setIsLogInActive(true)}
+            />
+          )}
+        </div>
         <div className={style.menu}>
           <CheckBox
             checked={isActive}
@@ -45,23 +64,6 @@ const Header: React.FC<HeaderProps> = () => {
           />
           <GlobalSearch />
         </div>
-        {user ? (
-          <Button
-            view="primary"
-            title="Log Out"
-            size="normal"
-            disabled={false}
-            onClick={() => setUser(false)}
-          />
-        ) : (
-          <Button
-            view="primary"
-            title="Log In"
-            size="normal"
-            disabled={false}
-            onClick={() => setIsLogInActive(true)}
-          />
-        )}
       </Container>
     </>
   );

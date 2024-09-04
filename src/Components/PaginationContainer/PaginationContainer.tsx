@@ -8,6 +8,7 @@ import RequestStore from "@/Store/requestStore";
 import { useStore } from "zustand";
 import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
+import useWidth from "@/Hooks/useWidth";
 
 const PaginationContainer = () => {
   const { value, isActive, isPromo } = useStore(RequestStore);
@@ -16,7 +17,17 @@ const PaginationContainer = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(true);
   const [visitedPages, setVisitedPages] = useState<number[]>([]);
-  const perPage = 8;
+  const [perPage, setPerPage] = useState(8)
+  const [width] = useWidth()
+  useEffect(() => {
+    if (width < 1170 && width > 700) {
+      setPerPage(6);
+    } else if (width < 700) {
+      setPerPage(3);
+    } else {
+      setPerPage(8);
+    }
+  }, [width]);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -44,7 +55,7 @@ const PaginationContainer = () => {
     };
 
     fetchProducts();
-  }, [currentPage, isActive, isPromo, value]);
+  }, [currentPage, isActive, isPromo, perPage, value]);
 
   const handlePageChange = (page: number) => {
     if (page !== currentPage) {

@@ -18,6 +18,37 @@ const Pagination: React.FC<PaginationProps> = ({
   onFirstPage,
   onLastPage,
 }) => {
+  type PageType = number | '...';
+
+  const getVisiblePages = (): PageType[] => {
+    const pages: PageType[] = [];
+    const maxVisiblePages = 5;
+
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      pages.push(1);
+      const start = Math.max(currentPage - 1, 2);
+      const end = Math.min(currentPage + 1, totalPages - 1);
+
+      if (start > 2) {
+        pages.push('...');
+      }
+      for (let i = start; i <= end; i++) {
+        pages.push(i);
+      }
+      if (end < totalPages - 1) {
+        pages.push('...');
+      }
+
+      pages.push(totalPages);
+    }
+
+    return pages;
+  };
+
   return (
     <div className={style.pagination}>
       <p
@@ -30,30 +61,36 @@ const Pagination: React.FC<PaginationProps> = ({
       >
         First
       </p>
-      {[...Array(totalPages)].map((_, index) => {
-        const pageNumber = index + 1;
+      {getVisiblePages().map((page, index) => {
+        if (page === '...') {
+          return (
+            <span key={index} className={style.ellipsis}>
+              {page}
+            </span>
+          );
+        }
         return (
           <a
             key={index}
-            onClick={() => onPageChange(pageNumber)}
+            onClick={() => onPageChange(page as number)}
             className={
-              pageNumber === currentPage
+              page === currentPage
                 ? style.active
-                : visitedPages.includes(pageNumber)
+                : visitedPages.includes(page as number)
                 ? style.visited
                 : ""
             }
             style={{
               color:
-                pageNumber === currentPage
+                page === currentPage
                   ? "blue"
-                  : visitedPages.includes(pageNumber)
+                  : visitedPages.includes(page as number)
                   ? "gray"
                   : "black",
-              cursor: pageNumber === currentPage ? "default" : "pointer",
+              cursor: page === currentPage ? "default" : "pointer",
             }}
           >
-            {pageNumber}
+            {page}
           </a>
         );
       })}

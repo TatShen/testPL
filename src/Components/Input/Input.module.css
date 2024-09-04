@@ -4,17 +4,17 @@
   justify-content: space-between;
   gap: 0 0.625rem;
   flex-direction: column;
-  color: grey;
+  color: black;
   cursor: text;
   width: 100%;
 }
 
 .input {
-  color: grey;
+  color: black;
   cursor: text;
 
   &::placeholder {
-    color: grey;
+    color: black;
   }
 }
 
