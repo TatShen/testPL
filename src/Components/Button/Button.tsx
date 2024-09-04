@@ -2,7 +2,6 @@
 import classNames from "classnames";
 
 import style from "./Button.module.css";
-import Loading from "../../../public/icons/loading.svg";
 import type { ButtonProps } from "./Types";
 
 const Button: React.FC<ButtonProps> = ({
@@ -24,12 +23,7 @@ const Button: React.FC<ButtonProps> = ({
     disabled ? style.disabled : ""
   );
 
-  const content = (
-    <>
-      <p>{title}</p>
-      {!disabled && isLoading && <Loading />}
-    </>
-  );
+
 
   return (
     <button
@@ -38,7 +32,7 @@ const Button: React.FC<ButtonProps> = ({
       onClick={onClick ? onClick : undefined}
       disabled={disabled}
     >
-      {content}
+      {title}
     </button>
   );
 };

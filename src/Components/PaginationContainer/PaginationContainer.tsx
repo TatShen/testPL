@@ -7,6 +7,7 @@ import style from "./PaginationContainer.module.css";
 import RequestStore from "@/Store/requestStore";
 import { useStore } from "zustand";
 import Pagination from "../Pagination/Pagination";
+import Loader from "../Loader/Loader";
 
 const PaginationContainer = () => {
   const { value, isActive, isPromo } = useStore(RequestStore);
@@ -64,7 +65,7 @@ const PaginationContainer = () => {
   };
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loader/>;
   }
 
   return products.length > 0 ? (
